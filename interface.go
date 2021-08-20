@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"helm.sh/helm/v3/pkg/action"
+	"helm.sh/helm/v3/pkg/chart"
 	"helm.sh/helm/v3/pkg/release"
 	"helm.sh/helm/v3/pkg/repo"
 )
@@ -25,4 +26,5 @@ type Client interface {
 	LintChart(spec *ChartSpec) error
 	SetDebugLog(debugLog action.DebugLog)
 	ListReleaseHistory(name string, max int) ([]*release.Release, error)
+	GetChart(string, *action.ChartPathOptions) (*chart.Chart, string, error)
 }
