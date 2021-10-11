@@ -253,10 +253,6 @@ func (c *HelmClient) install(spec *ChartSpec) (*release.Release, error) {
 	client := action.NewInstall(c.ActionConfig)
 	mergeInstallOptions(spec, client)
 
-	if client.Version == "" {
-		client.Version = ">0.0.0-0"
-	}
-
 	helmChart, chartPath, err := c.GetChart(spec.ChartName, &client.ChartPathOptions)
 	if err != nil {
 		return nil, err
