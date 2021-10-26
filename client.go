@@ -270,6 +270,7 @@ func (c *HelmClient) install(spec *ChartSpec) (*release.Release, error) {
 		if err := action.CheckDependencies(helmChart, req); err != nil {
 			if client.DependencyUpdate {
 				man := &downloader.Manager{
+					Out: os.Stdout,
 					ChartPath:        chartPath,
 					Keyring:          client.ChartPathOptions.Keyring,
 					SkipUpdate:       false,
@@ -765,7 +766,6 @@ func mergeInstallOptions(chartSpec *ChartSpec, installOptions *action.Install) {
 	installOptions.SkipCRDs = chartSpec.SkipCRDs
 	installOptions.DryRun = chartSpec.DryRun
 	installOptions.SubNotes = chartSpec.SubNotes
-	installOptions.CreateNamespace = chartSpec.CreateNamespace
 	installOptions.Devel = chartSpec.Devel
 }
 

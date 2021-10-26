@@ -124,8 +124,5 @@ type ChartSpec struct {
 	DryRun bool `json:"dryRun,omitempty"`
 
 	// +optional
-	CreateNamespace bool `json:"createNamespace,omitempty"`
-
-	// +optional
 	Devel bool `json:"devel,omitempty"`
 }
